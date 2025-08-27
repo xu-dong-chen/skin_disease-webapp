@@ -13,10 +13,10 @@ function App() {
     const formData = new FormData();
     formData.append("file", file);
 
-    const response = await fetch("http://127.0.0.1:8000/predict", {
-      method: "POST",
-      body: formData,
-    });
+  const response = await fetch("https://skin-disease-webapp-spas.onrender.com/predict", {
+    method: "POST",
+    body: formData,
+  });
 
     const data = await response.json();
     setPrediction(data.class);
