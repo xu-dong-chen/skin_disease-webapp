@@ -16,6 +16,9 @@
   max-width: 400px;
   text-align: center;
 }
+body {
+  background: pink !important;
+}
 
 h1 {
   font-size: 1.5rem;
