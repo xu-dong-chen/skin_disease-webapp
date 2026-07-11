@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Eczema",
+    "description": "Eczema is a condition that causes dry, itchy, inflamed skin.",
+    "symptoms": [
+      "itching",
+      "redness",
+      "dry skin",
+      "rash"
+    ],
+    "causes": [
+      "genetic factors",
+      "immune system response",
+      "environmental triggers"
+    ],
+    "treatments": [
+      "moisturisers",
+      "topical medications",
+      "avoiding triggers"
+    ],
+    "when_to_seek_help": "Seek medical advice if symptoms are severe or persistent."
+  }
+]
