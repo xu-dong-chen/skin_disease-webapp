@@ -23,16 +23,32 @@ print(next(model.parameters()).device)
 
 
 def generateResponse(prompt):
+    # Convert prompt into a message in Qwen chatbot prefered format
+    messages = [
+        {
+            "role": "user",
+            "content": prompt
+        }
+    ]
+
+    text = tokenizer.apply_chat_template( # Apply the template on the message
+        messages,
+        tokenize=False, # Does not tokenize message just yet
+        add_generation_prompt=True # Adds a indicator for the AI to reply to the prompt
+    )
     print("Tokenizing...")
-    inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
+    inputs = tokenizer(text, return_tensors="pt").to(model.device)
+    input_length = inputs["input_ids"].shape[1] # Gets the input length of the users question
 
     print("generating...")
-
-    outputs = model.generate(**inputs, max_new_tokens=50, temperature=0.7)
+    
+    with torch.inference_mode():
+        outputs = model.generate(**inputs, max_new_tokens=200, temperature=0.7)
 
     print("generation complete...")
 
-    response = tokenizer.decode(outputs[0], skip_special_tokens=True)
+    generated_tokens = outputs[0][input_length:] # Gets the relevant tokens that are only a part of the AI's response to the user's question
+    response = tokenizer.decode(generated_tokens, skip_special_tokens=True) 
 
     return response
 

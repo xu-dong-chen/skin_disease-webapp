@@ -7,6 +7,8 @@ from PIL import Image
 from fastapi import FastAPI, File, UploadFile
 import uvicorn
 import timm
+from chatbot.chat_service import chat
+from pydantic import BaseModel
 
 
 app = FastAPI()
@@ -20,7 +22,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 
 class DiseaseClassifier(nn.Module):
   def __init__(self, num_classes):
@@ -41,7 +42,7 @@ model = DiseaseClassifier(num_classes)
 model.load_state_dict(torch.load("skin_model_weights.pth", map_location="cpu"))
 model.eval()
 
-# Preprocessing (adjust to match your training setup)
+# Preprocessing (adjust to match the training setup)
 transform = transforms.Compose([
     transforms.Resize((224, 224)),  # Change if needed
     transforms.ToTensor(),
@@ -62,6 +63,16 @@ async def predict(file: UploadFile = File(...)):
         _, predicted = torch.max(outputs, 1)
     
     return {"class": classes[predicted.item()]}
+
+class ChatRequest(Basemodel):
+   message: str
+
+@app.post("/chat")
+async def chatbot(request: ChatRequest):
+   answer = chat(request.message)
+   return {
+      "response": answer
+   }
 
 @app.get("/healthz")
 def health():
