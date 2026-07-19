@@ -64,7 +64,7 @@ async def predict(file: UploadFile = File(...)):
     
     return {"class": classes[predicted.item()]}
 
-class ChatRequest(Basemodel):
+class ChatRequest(BaseModel):
    message: str
 
 @app.post("/chat")

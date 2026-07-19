@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
+import Chatbot from "./components/Chatbot"
 
 function App() {
   const [file, setFile] = useState(null);
@@ -55,6 +56,7 @@ function App() {
         {prediction && <p className="prediction">✅ Predicted: {prediction}</p>}
         {error && <p className="error">{error}</p>}
       </div>
+      <Chatbot />
     </div>
   );
 }
