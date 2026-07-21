@@ -10,7 +10,7 @@ function Chatbot(){
     const [isOpen,setIsOpen] = useState(false);
     
     const [message,setMessage] = useState("");
-    const [history,setHistory] = useState("");
+    const [history,setHistory] = useState([]);
     const [loading,setLoading] = useState(false);
 
     return (
@@ -20,7 +20,11 @@ function Chatbot(){
                     <h3>🤖 Skin Assistant</h3>
 
                     <div className="chat-messages">
-                        <p>Ask me a question about the skin diseases detected by this webapp.</p>
+                        {history.map((msg,index) => (
+                            <div key = {index}>
+                                <strong>{msg.sender}:</strong>{msg.text}
+                            </div>
+                        ))}
                     </div>
 
                     <input
