@@ -11,6 +11,7 @@ function Chatbot(){
     
     const [message,setMessage] = useState("");
     const [history,setHistory] = useState("");
+    const [loading,setLoading] = useState(false);
 
     return (
         <div className="chatbot-container">
@@ -18,8 +19,20 @@ function Chatbot(){
                 <div className="chat-window">
                     <h3>🤖 Skin Assistant</h3>
 
-                    <p>Hello! Ask me about common skin diseases.</p>
+                    <div className="chat-messages">
+                        <p>Ask me a question about the skin diseases detected by this webapp.</p>
+                    </div>
 
+                    <input
+                        type = "text"
+                        placeholder="Ask a question"
+                        value = {message}
+                        onChange={(e) => setMessage(e.target.value)}
+                    />
+
+                    <button>
+                        Send
+                    </button>
                 </div>
                 )}
             
