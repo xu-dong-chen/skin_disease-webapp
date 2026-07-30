@@ -3,23 +3,60 @@ import "./Chatbot.css";
 
 function Chatbot(){
 
-    const [isOpen,setIsOpen] = useState(false);
+    const [isOpen,setIsOpen] = useState(false); // boolean value to chat window
     
-    const [message,setMessage] = useState("");
-    const [history,setHistory] = useState([]);
-    const [loading,setLoading] = useState(false);
+    const [message,setMessage] = useState(""); // user message
+    const [history,setHistory] = useState([]); // chat history
+    const [loading,setLoading] = useState(false); // boolean value to indicate if the AI is repsonding or not
     
+    // function when the user sends a message
     const sendMessage = async () => {
-        const userMessage = {
-            sender: "You",
-            text: message
-        };
-        if(!message.trim()){
+
+        if (loading){ // if the program is still loading (more for protection)
             return;
         }
-        setHistory(prev => [...prev, userMessage]);
+
+        const userMessage = { // User message to save into the chat history
+            sender: "You", 
+            text: message
+        };
+        if(!message.trim()){ // check if its an empty message
+            return;
+        }
+        
+        // update chat history and clear the last message inputted by the user
+        setHistory(prev => [...prev, userMessage]); 
         setMessage("");
-    }
+
+        setLoading(true);
+        // Try catch finally to get ai response and catch errors
+        try{
+            const response = await fetch("http://127.0.0.1:8000/chat", 
+                {
+                    method: "POST",
+                    headers:{
+                        "Content-Type":"application/json"
+                    },
+                    body:JSON.stringify({
+                        message: message
+                    })
+                })
+
+            const data = await response.json();
+
+            const aiResponse = {
+                sender: "AI",
+                text: data.response
+            }
+            setHistory(prev => [...prev, aiResponse]);
+        }
+        catch(error){
+            console.error(error);
+        }
+        finally{
+            setLoading(false) // Will always run to enable the user to ask another question
+        }
+    }   
 
     return (
         <div className="chatbot-container">
@@ -27,8 +64,8 @@ function Chatbot(){
                 <div className="chat-window">
                     <h3>🤖 Skin Assistant</h3>
 
-                    <div className="chat-messages">
-                        {history.map((msg,index) => (
+                    <div className="chat-messages"> 
+                        {history.map((msg,index) => ( 
                             <div key = {index}>
                                 <strong>{msg.sender}:</strong>{msg.text}
                             </div>
@@ -42,8 +79,9 @@ function Chatbot(){
                         onChange={(e) => setMessage(e.target.value)}
                     />
 
-                    <button onClick={sendMessage}>
-                        Send
+                    <button onClick={sendMessage} // Button to send question and disabled while AI is generating answer
+                            disabled = {loading}>
+                        {loading ? "Thinking..." : "Send"} 
                     </button>
                 </div>
                 )}
