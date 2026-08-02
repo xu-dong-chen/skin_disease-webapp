@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect,useRef } from "react";
 import "./Chatbot.css";
 
 function Chatbot(){
@@ -58,6 +58,13 @@ function Chatbot(){
         }
     }   
 
+    const chatEndRef = useRef(null);
+    useEffect(() => {
+        chatEndRef.current?.scrollIntoView({
+            behavior: "smooth"
+        });
+    }, [history])
+
     return (
         <div className="chatbot-container">
             { isOpen && (
@@ -66,10 +73,13 @@ function Chatbot(){
 
                     <div className="chat-messages"> 
                         {history.map((msg,index) => ( 
-                            <div key = {index}>
-                                <strong>{msg.sender}:</strong>{msg.text}
+                            <div key = {index} className={`message ${msg.sender === "You" ? "user-message" : "ai-message"}`}>
+                                <strong>{msg.sender}</strong>
+                                <br />
+                                {msg.text}
                             </div>
                         ))}
+                        <div ref={chatEndRef}></div>
                     </div>
 
                     <input
@@ -77,6 +87,12 @@ function Chatbot(){
                         placeholder="Ask a question"
                         value = {message}
                         onChange={(e) => setMessage(e.target.value)}
+
+                        onKeyDown={(e) => {
+                            if(e.key === "Enter"){
+                                sendMessage();
+                            }
+                        }}
                     />
 
                     <button onClick={sendMessage} // Button to send question and disabled while AI is generating answer

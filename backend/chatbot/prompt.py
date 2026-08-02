@@ -1,5 +1,6 @@
 # function that builds the prompt to ask the AI(Qwen)
-def buildPrompt(question,disease):
+def buildPrompt(question,disease, history):
+    conversation = "/n".join(history)
     if disease is None:
         return f"""
             You are an educational chatbot for common skin diseases.
@@ -30,6 +31,9 @@ def buildPrompt(question,disease):
 
     When to seek medical attention:
     {disease["when_to_seek_help"]}
+
+    Conversation History:
+    {conversation}
 
     User Question:
     {question}

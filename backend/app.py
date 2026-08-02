@@ -69,6 +69,7 @@ class ChatRequest(BaseModel):
 
 @app.post("/chat")
 async def chatbot(request: ChatRequest):
+   print(f"Received: {request.message}")
    answer = chat(request.message)
    return {
       "response": answer
