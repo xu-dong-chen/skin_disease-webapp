@@ -16,6 +16,9 @@
     justify-content: center;
 }
 
+.chat-input {
+    margin-top: 50px;
+}
 
 .chat-window {
     position: absolute;

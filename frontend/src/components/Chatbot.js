@@ -3,7 +3,7 @@ import "./Chatbot.css";
 
 function Chatbot(){
 
-    const [isOpen,setIsOpen] = useState(false); // boolean value to chat window
+    const [isOpen,setIsOpen] = useState(true); // boolean value to chat window
     
     const [message,setMessage] = useState(""); // user message
     const [history,setHistory] = useState([]); // chat history
@@ -31,7 +31,7 @@ function Chatbot(){
         setLoading(true);
         // Try catch finally to get ai response and catch errors
         try{
-            const response = await fetch("http://127.0.0.1:8000/chat", 
+            const response = await fetch("https://skin-disease-webapp-spas.onrender.com/chat", 
                 {
                     method: "POST",
                     headers:{
@@ -82,23 +82,25 @@ function Chatbot(){
                         <div ref={chatEndRef}></div>
                     </div>
 
-                    <input
-                        type = "text"
-                        placeholder="Ask a question"
-                        value = {message}
-                        onChange={(e) => setMessage(e.target.value)}
+                    <div className="chat-input">
+                        <input
+                            type = "text"
+                            placeholder="Ask a question"
+                            value = {message}
+                            onChange={(e) => setMessage(e.target.value)}
 
-                        onKeyDown={(e) => {
-                            if(e.key === "Enter"){
-                                sendMessage();
-                            }
-                        }}
-                    />
+                            onKeyDown={(e) => {
+                                if(e.key === "Enter"){
+                                    sendMessage();
+                                }
+                            }}
+                        />
 
-                    <button onClick={sendMessage} // Button to send question and disabled while AI is generating answer
-                            disabled = {loading}>
-                        {loading ? "Thinking..." : "Send"} 
-                    </button>
+                        <button onClick={sendMessage} // Button to send question and disabled while AI is generating answer
+                                disabled = {loading}>
+                            {loading ? "Thinking..." : "Send"} 
+                        </button>
+                    </div>
                 </div>
                 )}
             
