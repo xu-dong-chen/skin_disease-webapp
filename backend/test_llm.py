@@ -1,4 +1,4 @@
-from chatbot.llm import generateResponse
+from chatbot_backend.chatbot.llm import generateResponse
 
 
 answer = generateResponse(

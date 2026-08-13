@@ -55,3 +55,11 @@ button:disabled {
   margin-top: 1rem;
   color: #dc2626;
 }
+
+.prediction {
+  margin-top: 15px;
+}
+
+.prediction.unable {
+  color: red;
+}

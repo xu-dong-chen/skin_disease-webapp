@@ -7,8 +7,6 @@ from PIL import Image
 from fastapi import FastAPI, File, UploadFile
 import uvicorn
 import timm
-from chatbot.chat_service import chat
-from pydantic import BaseModel
 
 
 app = FastAPI()
@@ -53,6 +51,9 @@ classes = ["Acne", "Actinic Keratosis", "Basal Cell Carcinoma","Eczema","Rosacea
 
 @app.post("/predict")
 async def predict(file: UploadFile = File(...)):
+    print("Filename:", file.filename)
+    print("Content type:", file.content_type)
+
     # Read image
     image = Image.open(file.file).convert("RGB")
     img_tensor = transform(image).unsqueeze(0)  # Add batch dimension
@@ -60,20 +61,24 @@ async def predict(file: UploadFile = File(...)):
     # Run inference
     with torch.no_grad():
         outputs = model(img_tensor)
-        _, predicted = torch.max(outputs, 1)
-    
-    return {"class": classes[predicted.item()]}
 
-class ChatRequest(BaseModel):
-   message: str
+        probabilities = torch.softmax(outputs, dim=1)
+        confidence, predicted = torch.max(probabilities, 1)
 
-@app.post("/chat")
-async def chatbot(request: ChatRequest):
-   print(f"Received: {request.message}")
-   answer = chat(request.message)
-   return {
-      "response": answer
-   }
+    confidence = confidence.item()
+    predicted_class = classes[predicted.item()]
+
+    if confidence < 0.70:
+        return {
+            "class": "Could not identify",
+            "confidence": confidence
+        }
+
+    return {
+        "class": predicted_class,
+        "confidence": confidence
+    }
+
 
 @app.get("/healthz")
 def health():
