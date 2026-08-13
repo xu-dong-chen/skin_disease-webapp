@@ -31,7 +31,7 @@ function Chatbot(){
         setLoading(true);
         // Try catch finally to get ai response and catch errors
         try{
-            const response = await fetch("http://127.0.0.1:8001/chat", 
+            const response = await fetch("https://your-chatbot-backend.onrender.com/chat", 
                 {
                     method: "POST",
                     headers:{
