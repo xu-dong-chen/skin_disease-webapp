@@ -31,7 +31,7 @@ function Chatbot(){
         setLoading(true);
         // Try catch finally to get ai response and catch errors
         try{
-            const response = await fetch("https://your-chatbot-backend.onrender.com/chat", 
+            const response = await fetch("https://skin-disease-webapp-spas.onrender.com/chat", 
                 {
                     method: "POST",
                     headers:{

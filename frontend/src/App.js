@@ -31,7 +31,7 @@ function App() {
     try {
       setLoading(true);
       setError("");
-      const response = await fetch("https://your-backend.onrender.com/predict", {
+      const response = await fetch("https://skin-disease-webapp-spas.onrender.com/predict", {
         method: "POST",
         body: formData,
       });
