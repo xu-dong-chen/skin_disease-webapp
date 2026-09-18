@@ -1,23 +1,133 @@
 [
-  {
-    "name": "Eczema",
-    "description": "Eczema is a condition that causes dry, itchy, inflamed skin.",
-    "symptoms": [
-      "itching",
-      "redness",
-      "dry skin",
-      "rash"
-    ],
-    "causes": [
-      "genetic factors",
-      "immune system response",
-      "environmental triggers"
-    ],
-    "treatments": [
-      "moisturisers",
-      "topical medications",
-      "avoiding triggers"
-    ],
-    "when_to_seek_help": "Seek medical advice if symptoms are severe or persistent."
-  }
+{
+"name": "Acne",
+"description": "Acne is a common skin condition that occurs when hair follicles become blocked with oil and dead skin cells, leading to spots and inflammation, most often on the face, chest and back.",
+"symptoms": [
+"blackheads",
+"whiteheads",
+"papules",
+"pustules",
+"oily skin",
+"tenderness or soreness of affected areas",
+"scarring or dark marks after spots heal"
+],
+"causes": [
+"excess sebum production",
+"blocked hair follicles",
+"Cutibacterium acnes bacteria",
+"hormonal changes such as puberty, menstruation or pregnancy",
+"genetic predisposition",
+"certain medications and cosmetic products"
+],
+"treatments": [
+"gentle skin cleansing routines",
+"over-the-counter topical treatments such as benzoyl peroxide or salicylic acid",
+"prescription topical retinoids",
+"topical or oral antibiotics prescribed by a clinician",
+"hormonal treatments in some cases",
+"oral isotretinoin for severe cases under specialist supervision",
+"avoiding picking or squeezing spots to reduce scarring"
+],
+"when_to_seek_help": "Consider seeing a pharmacist or doctor if acne is moderate to severe, painful, leaving scars or dark marks, not improving after several weeks of over-the-counter treatment, or causing significant distress. Only a healthcare professional can confirm the diagnosis and recommend suitable treatment."
+},
+{
+"name": "Actinic Keratosis",
+"description": "Actinic keratosis is a rough, scaly patch of skin caused by long-term ultraviolet light exposure. It is considered a pre-cancerous change because a small proportion of lesions can progress to squamous cell carcinoma, so professional assessment is important.",
+"symptoms": [
+"rough, dry or scaly patches of skin",
+"patches that are flat or slightly raised",
+"pink, red, brown or skin-coloured lesions",
+"patches commonly on the face, scalp, ears, neck, forearms or backs of hands",
+"itching, burning or tenderness in the affected area",
+"patches that come and go or slowly enlarge"
+],
+"causes": [
+"cumulative ultraviolet exposure from sunlight",
+"use of sunbeds or tanning devices",
+"fair skin that burns easily",
+"older age",
+"a weakened immune system, including after organ transplantation",
+"outdoor work or extensive outdoor recreation",
+"previous history of sun damage or skin cancer"
+],
+"treatments": [
+"medical assessment to confirm the diagnosis and exclude skin cancer",
+"cryotherapy (freezing) performed by a clinician",
+"prescription topical treatments such as 5-fluorouracil, imiquimod or diclofenac gel",
+"photodynamic therapy",
+"curettage or shave excision with or without biopsy",
+"ongoing sun protection with high-factor sunscreen, clothing and shade",
+"regular skin monitoring and clinical follow-up"
+],
+"when_to_seek_help": "Actinic keratosis should be assessed by a doctor or dermatologist, as it can look similar to skin cancer and cannot be diagnosed reliably from appearance or symptoms alone. Seek prompt medical advice if a patch grows, thickens, bleeds, ulcerates, becomes painful or changes in appearance."
+},
+{
+"name": "Basal Cell Carcinoma",
+"description": "Basal cell carcinoma is the most common form of skin cancer, arising from basal cells in the outer layer of the skin. It usually grows slowly and rarely spreads to other parts of the body, but it can damage surrounding tissue if untreated, so medical diagnosis and treatment are essential.",
+"symptoms": [
+"a pearly, waxy or translucent bump",
+"a flat, scaly patch that may be pink, red or brown",
+"a sore or spot that bleeds, crusts and does not heal",
+"visible small blood vessels on the surface of the lesion",
+"a lesion with a raised, rolled edge and a central depression or ulcer",
+"itching or occasional bleeding from the area",
+"lesions most often on sun-exposed skin such as the face, head, neck or shoulders"
+],
+"causes": [
+"long-term or intense ultraviolet exposure from sunlight",
+"use of sunbeds or tanning devices",
+"fair skin, light eyes or skin that burns easily",
+"increasing age",
+"a personal or family history of skin cancer",
+"a weakened immune system or immunosuppressive medication",
+"previous radiotherapy or exposure to arsenic",
+"certain inherited conditions such as basal cell naevus syndrome"
+],
+"treatments": [
+"clinical examination and skin biopsy to confirm the diagnosis",
+"surgical excision",
+"Mohs micrographic surgery for high-risk or facial lesions",
+"curettage and cautery",
+"cryotherapy for selected superficial lesions",
+"prescription topical therapies such as imiquimod or 5-fluorouracil for some superficial types",
+"photodynamic therapy",
+"radiotherapy when surgery is unsuitable",
+"targeted drug therapy for advanced disease",
+"long-term sun protection and regular skin checks"
+],
+"when_to_seek_help": "Any new, changing, bleeding or non-healing skin lesion should be assessed by a doctor without delay, as basal cell carcinoma cannot be diagnosed from symptoms or appearance alone and requires professional examination, often with a biopsy. Early diagnosis and treatment usually give the best outcome and reduce the risk of tissue damage or scarring."
+},
+{
+"name": "Rosacea",
+"description": "Rosacea is a long-term inflammatory skin condition that mainly affects the central face, causing persistent redness, flushing and sometimes spots or visible blood vessels. It tends to follow a pattern of flare-ups and quieter periods.",
+"symptoms": [
+"persistent facial redness, especially on the cheeks, nose, chin and forehead",
+"episodes of flushing or blushing",
+"visible small blood vessels (telangiectasia)",
+"papules and pustules resembling acne",
+"burning, stinging or sensitive skin",
+"dry, rough or swollen skin",
+"eye irritation, dryness or grittiness in ocular rosacea",
+"thickened skin of the nose (rhinophyma) in some long-standing cases"
+],
+"causes": [
+"not fully understood, but thought to involve abnormal immune and inflammatory responses",
+"abnormalities in facial blood vessels and nerve signalling",
+"genetic predisposition and family history",
+"Demodex mites and skin microbe changes",
+"common triggers including sunlight, heat, cold wind, spicy food, alcohol, hot drinks, exercise and stress",
+"some skincare products and medications, including topical steroids"
+],
+"treatments": [
+"identifying and avoiding personal triggers",
+"gentle, non-irritating skincare and daily sun protection",
+"prescription topical treatments such as metronidazole, azelaic acid or ivermectin",
+"topical brimonidine to reduce redness",
+"oral antibiotics such as doxycycline for inflammatory papules and pustules",
+"oral isotretinoin in resistant cases under specialist supervision",
+"laser or light-based treatment for visible blood vessels and persistent redness",
+"eye lubricants or specialist referral for ocular involvement"
+],
+"when_to_seek_help": "See a doctor or pharmacist if facial redness or spots are persistent, worsening or affecting your confidence, and seek medical advice promptly if your eyes become sore, red or affected, or if the skin on your nose begins to thicken. A healthcare professional is needed to confirm the diagnosis, as rosacea can resemble other skin conditions."
+}
 ]
