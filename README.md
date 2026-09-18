@@ -43,7 +43,6 @@ The chatbot uses:
 
 ## 🏗️ Project Structure
 
-```text
 skin_disease-webapp/
 │
 ├── README.md
@@ -72,7 +71,6 @@ skin_disease-webapp/
         ├── App.css
         └── components/
             └── Chatbot.js
-```
 
 ---
 
@@ -111,27 +109,19 @@ skin_disease-webapp/
 
 Navigate to the frontend directory:
 
-```bash
 cd frontend
-```
 
 Install the dependencies:
 
-```bash
 npm install
-```
 
 Start the React development server:
 
-```bash
 npm start
-```
 
 The frontend should then be available at:
 
-```text
 http://localhost:3000
-```
 
 ---
 
@@ -139,45 +129,31 @@ http://localhost:3000
 
 Navigate to the backend:
 
-```bash
 cd backend
-```
 
 It is recommended to create a Python virtual environment:
 
-```bash
 python -m venv venv
-```
 
 Activate it on Windows:
 
-```powershell
 venv\Scripts\activate
-```
 
 Install the dependencies:
 
-```bash
 pip install -r requirements.txt
-```
 
 Start the FastAPI server:
 
-```bash
 python -m uvicorn app:app --reload
-```
 
 The API should be available at:
 
-```text
 http://127.0.0.1:8000
-```
 
 FastAPI documentation can be accessed at:
 
-```text
 http://127.0.0.1:8000/docs
-```
 
 ---
 
@@ -185,53 +161,37 @@ http://127.0.0.1:8000/docs
 
 Navigate to the chatbot backend:
 
-```bash
 cd chatbot_backend
-```
 
 Create and activate a virtual environment if you have not already done so:
 
-```bash
 python -m venv venv
-```
 
 On Windows:
 
-```powershell
 venv\Scripts\activate
-```
 
 Install the dependencies:
 
-```bash
 pip install -r requirements.txt
-```
 
 Start the chatbot API:
 
-```bash
 python -m uvicorn app:app --reload
-```
 
 The chatbot API will normally run at:
 
-```text
 http://127.0.0.1:8000
-```
 
 If the skin disease backend and chatbot backend are being run simultaneously, they should be configured to use **different ports**.
 
 For example:
 
-```bash
 python -m uvicorn app:app --reload --port 8000
-```
 
 and:
 
-```bash
 python -m uvicorn app:app --reload --port 8001
-```
 
 The frontend fetch URLs should then point to the appropriate backend.
 
@@ -290,9 +250,7 @@ A high confidence score does not guarantee a correct diagnosis.
 
 The application also uses a confidence threshold. If the model's confidence is below the threshold, the application returns:
 
-```text
 Could not identify
-```
 
 This is intended to reduce low-confidence classifications, but it does not eliminate incorrect predictions.
 
@@ -332,19 +290,15 @@ The backend APIs can be deployed separately from the React frontend.
 
 For example:
 
-```text
 Frontend
    │
    ├── POST /predict ──> Skin Disease Backend
    │
    └── POST /chat ─────> Chatbot Backend
-```
 
 When deploying the frontend, the local development URLs such as:
 
-```text
 http://127.0.0.1:8000
-```
 
 must be replaced with the appropriate deployed backend URLs.
 
@@ -354,9 +308,7 @@ must be replaced with the appropriate deployed backend URLs.
 
 The chatbot uses a JSON knowledge base located at:
 
-```text
 chatbot_backend/kb/diseases_kb.json
-```
 
 The knowledge base contains information such as:
 
